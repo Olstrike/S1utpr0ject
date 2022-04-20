@@ -72,20 +72,18 @@ class MOB:
         if relative_damage > 0:
             self.health -= relative_damage
         if self.health < 0: self.health = 0
-
-    class Goblin:
         
-        def __str__(self) -> str:
-            return f"Goblin #{self.id}\nHealth: {self.health}\nAttack: {self.attack}\nArmor: {self.armor}"
+    def __str__(self) -> str:
+        return f"Goblin #{self.id}\nHealth: {self.health}\nAttack: {self.attack}\nArmor: {self.armor}"
 
-        def get_health(self):
-            return self.health
+    def get_health(self):
+        return self.health
     
-        def get_attack(self):
-            return self.attack
+    def get_attack(self):
+        return self.attack
     
-        def get_name(self):
-            return f"Goblin #{self.id}"
+    def get_name(self):
+        return f"Goblin #{self.id}"
     
 
 def save_character(chars : list()):
@@ -112,11 +110,12 @@ def load_characters():
             characters.append(char)
     return characters    
 
+
 def create_character():
     print("Welcome to the Character creator!")
     name = input("what is your characters name?: ")
-    health = randint(10, 30)
-    armor = randint(0, 5)
+    health = input("What health do you want?: ")
+    armor = input("How much armor do you want?: ")
 
     return_char = Character(name, health, armor)
 
