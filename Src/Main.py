@@ -1,5 +1,5 @@
 import Etc
-from Etc import Character, Goblin, save_character, load_characters, create_character
+from Etc import Character, goblin, save_character, load_characters, create_character,
 from random import randint, shuffle, choice
 
 def fight(players : list, enemies : list):
@@ -14,11 +14,11 @@ def fight(players : list, enemies : list):
         else:
             target = choice(players)
             
-        target.take_damage(char.get_attack())
+        target.take_damage(char)
         
         if target.get_health() == 0:
             print(f"{target.get_name()} has died!")
-            if type(target) == Goblin:
+            if type(target) == goblin:
                 enemies.remove(target)
             else:
                 players.remove(target)
@@ -33,12 +33,6 @@ def fight(players : list, enemies : list):
 if __name__ == "__main__":
     enemies = []
     players = load_characters()
-    #players = []
-    
-    # emy = Character("Emy", 20, 5, 2)
-    # nick = Character("Nick", 15, 2, 1)
-    # players.append(emy)
-    # players.append(nick)
 
     print("Do you want to create new characters?")
     create_new = input("(y/n): ")
@@ -49,7 +43,7 @@ if __name__ == "__main__":
 
     amount_of_goblins = randint(1, 20)
     for i in range(amount_of_goblins):
-        enemies.append(Goblin(randint(10, 15), randint(0, 2), i+1))
+        enemies.append(goblin(randint(10, 15), randint(0, 2), i+1))
     
 
     
